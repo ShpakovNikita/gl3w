@@ -46,7 +46,10 @@ static int open_libgl(void)
 	if (!libgl)
 		return GL3W_ERROR_LIBRARY_OPEN;
 
+#pragma warning(push)
+#pragma warning( disable: 4152 )
 	*(void **)(&wgl_get_proc_address) = GetProcAddress(libgl, "wglGetProcAddress");
+#pragma warning(pop)
 	return GL3W_OK;
 }
 
